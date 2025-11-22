@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18   # or python: 3.11, depending on your project
+    commands:
+      - echo Installing dependencies...
+      - npm install   # change this if you’re not using Node
+  pre_build:
+    commands:
+      - echo Pre-build phase started...
+      - npm run lint || echo "Linting skipped"
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run build   # replace with your build command
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
